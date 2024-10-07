@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">STUDENT MANAGEMENT SYSTEM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/students">ALL STUDENTS</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<div class = "container">
+
+<h2 class = "text-center mt-2">STUDENT LIST</h2>
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href = "@{students/new}" class="btn btn-primary mb-3">ADD STUDENT</a>
+			</div>
+		</div>
+		<table class = "table table-striped table-bordered">
+		<thead class = "table-dark">
+			<tr>
+				<th class="text-center">FIRSTNAME</th>
+				<th class="text-center">LASTNAME</th>
+				<th class="text-center">EMAIL@</th>
+				<th class="text-center">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="student : ${students}" class="text-center">
+				<td th:text="${student.firstname}"></td>
+				<td th:text="${student.lastname}"></td>
+				<td th:text="${student.email}"></td>
+				<td><a th:href = "@{/students/edit/{id} (id = ${student.id})}" class = "btn btn-info">update</a>
+				
+				
+					<a th:href = "@{/students/{id} (id = ${student.id})}" class = "btn btn-danger">delete</a>
+				</td>
+				
+			</tr>
+		</tbody>
+	</table>
+</div>	
+</body>
+</html>

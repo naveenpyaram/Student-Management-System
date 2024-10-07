@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student Management System</title>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">STUDENT MANAGEMENT SYSTEM</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">HOME <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/students">ALL STUDENTS</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+
+<h1 class="text-center">STUDENT REGISTRATION FORM</h1>
+	<form th:action = "@{/students}" th:object = "${students}" method="POST">
+	<div class="form-group">
+			<label for="firstname">First Name</label> <input
+				type="text" class="form-control" id="firstname" th:field = "*{firstname}"
+			 placeholder="Enter your first name"> 
+		</div>
+		<div class="form-group">
+			<label for="lastname">Last Name</label> <input
+				type="text" class="form-control" id="lastname" th:field = "*{lastname}"
+			 placeholder="Enter your last name"> 
+		</div>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label> <input
+				type="email" class="form-control" id="exampleInputEmail1" th:field = "*{email}"
+				aria-describedby="emailHelp" placeholder="Enter email"> 
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>	
+	
+</body>
+</html>
